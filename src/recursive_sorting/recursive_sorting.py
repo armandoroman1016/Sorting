@@ -7,30 +7,39 @@ def merge( arrA, arrB ):
     b_index = 0
     print('a',arrA)
     print('b',arrB)
-    
-    for i in range(0, len(merged_arr)):
-        if a_index == len(arrA):
-            a_index = len( arrA )
-            print('emptyA', arrB)
-            merged_arr[i] = arrB[b_index]
-            b_index += 1
-        elif b_index == len(arrB):
-            b_index = len( arrB )
-            print('emptyB', arrA)
-            merged_arr[i] = arrA[a_index]
-            a_index += 1
-        elif arrA[a_index] < arrB[b_index]:
-            print('bLarger', arrB[b_index])
-            merged_arr[i] = arrA[a_index]
-            a_index += 1
-        elif arrA[a_index] > arrB[b_index]:
-            print('aLarger', arrA[a_index])
-            merged_arr[i] = arrB[b_index]
-            b_index += 1
-        elif arrA[a_index] == arrB[b_index]:
-            print('equal')
-            merged_arr[i] = arrA[a_index]
-            a_index += 1
+
+    if elements == 2:
+        smaller = min(arrA[0], arrB[0])
+        larger = max(arrA[0], arrB[0])
+        merged_arr[0] =  smaller
+        merged_arr[1] = larger
+        return merged_arr
+
+    else:
+        for i in range(0, elements):
+            print(i)
+            if a_index == len(arrA):
+                a_index = len( arrA )
+                print('emptyA', arrB)
+                merged_arr[i] = arrB[b_index]
+                b_index += 1
+            elif b_index == len(arrB):
+                b_index = len( arrB )
+                print('emptyB', arrA)
+                merged_arr[i] = arrA[a_index]
+                a_index += 1
+            elif arrA[a_index] < arrB[b_index]:
+                print('bLarger', arrB[b_index])
+                merged_arr[i] = arrA[a_index]
+                a_index += 1
+            elif arrA[a_index] > arrB[b_index]:
+                print('aLarger', arrA[a_index])
+                merged_arr[i] = arrB[b_index]
+                b_index += 1
+            elif arrA[a_index] == arrB[b_index]:
+                print('equal')
+                merged_arr[i] = arrA[a_index]
+                a_index += 1
 
     return merged_arr
 
@@ -46,18 +55,18 @@ def merge( arrA, arrB ):
 '''
 def merge_sort( arr ):
     # TO-DO
+    
     if len(arr) > 1:
         middle_index = len(arr) // 2
         left = arr[0: middle_index]
         right = arr[middle_index :]
         s_left = merge_sort(left)
         s_right = merge_sort(right)
-        x = merge(s_right, s_left)
-        print('x', x)
-
+        arr = merge(s_left, s_right)
+        
     return arr
 
-print(merge_sort([10, 5, 99, 12]))
+print(merge_sort([10, 5, 99, 12, 65, 49, -10, 18, 33, 45, 88, 10]))
 
 
 
