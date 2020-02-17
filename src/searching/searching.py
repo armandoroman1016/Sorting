@@ -40,17 +40,18 @@ def binary_search_recursive(arr, target, low, high):
   
   middle = (low+high)//2
 
-  if len(arr) == 0:
+  # if range of elements is two consecutive elements 
+  # and target element wasn't found or array is empty then return -1
+  if len(arr) == 0 or high - low == 1:
     return -1 # array empty
-  # TO-DO: add missing if/else statements, recursive calls
 
+  # if found return index of element
   if arr[middle] == target:
     return middle
-  
-  if arr[middle] < target:
+
+  elif arr[middle] < target:
     return binary_search_recursive(arr, target, middle, high)
   
-  elif arr[middle] > target:
+  else:
     return binary_search_recursive(arr, target, low, middle)
 
-  
