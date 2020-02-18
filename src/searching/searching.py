@@ -1,3 +1,9 @@
+import time
+import random
+
+nums = random.sample(range(5, 10000), 10000)
+nums.sort()
+
 # STRETCH: implement Linear Search				
 def linear_search(arr, target):
   
@@ -55,3 +61,18 @@ def binary_search_recursive(arr, target, low, high):
   else:
     return binary_search_recursive(arr, target, low, middle)
 
+t1 = time.time()
+binary_search_recursive(nums, 4032, 0, len(nums) - 1)
+t2 = time.time()
+print(f"recusive binary search time = {t2 - t1}")
+
+t1 = time.time()
+binary_search(nums, 4032)
+t2 = time.time()
+print(f"iterative binary search time = {t2 - t1}")
+
+
+t1 = time.time()
+linear_search(nums, 4032)
+t2 = time.time()
+print(f"linear search time = {t2 - t1}")
